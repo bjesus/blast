@@ -39,9 +39,29 @@ input:invalid, textarea:invalid {
 body {
   margin: auto;
   width: 960px;
+  background: rgb(68,162,229);
+  height: 100%;
+  background-attachment:fixed;
+  background-image: -webkit-gradient(
+      linear,
+      left bottom,
+      left top,
+      color-stop(0, rgb(7,17,37)),
+      color-stop(0.51, rgb(68,162,229))
+  );
+  background-image: -moz-linear-gradient(
+      center bottom,
+      rgb(7,17,37) 0%,
+      rgb(68,162,229) 51%
+  );
   }
 
-#container {}
+#container {
+  background: black;
+  margin: .5em -1em;
+  padding: 1em;
+  
+}
 
 header {}
 
@@ -54,7 +74,12 @@ footer {}
   height: 600px;
   overflow: auto;
 }
-  
+
+#playlist ol {
+  list-style-position: inside;
+  list-style-type: decimal-leading-zero;
+}
+
 #cover {
   float: left;
   width: 250px;
