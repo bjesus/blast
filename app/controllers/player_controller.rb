@@ -48,6 +48,15 @@ class PlayerController < ApplicationController
     redirect_to :back
   end
 
+  def clear
+    mpd = MPD.new 'localhost', 6601
+    mpd.connect
+    mpd.clear
+    mpd.disconnect
+
+    redirect_to :back
+  end
+
   def play
     mpd = MPD.new 'localhost', 6601
     mpd.connect

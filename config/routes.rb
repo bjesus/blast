@@ -6,6 +6,7 @@ Blast::Application.routes.draw do
   match 'player/previous' => 'player#backward'
   match 'player/add/:type/:what' => 'player#add'
   match 'player/play/:pos' => 'player#play'
+  match 'player/clear' => 'player#clear'
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action
