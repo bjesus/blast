@@ -3,9 +3,8 @@ class PlayerController < ApplicationController
   require 'rubygems'
   require 'librmpd'
 
-
   def pp
-    mpd = MPD.new 'localhost', 6601
+    mpd = MPD.new CONFIG['mpd_server'], CONFIG['mpd_port']
     mpd.connect
     if mpd.paused?
       mpd.pause=false
@@ -18,7 +17,7 @@ class PlayerController < ApplicationController
   end
 
   def forward
-    mpd = MPD.new 'localhost', 6601
+    mpd = MPD.new CONFIG['mpd_server'], CONFIG['mpd_port']
     mpd.connect
     mpd.next
     mpd.disconnect
@@ -28,7 +27,7 @@ class PlayerController < ApplicationController
 
 
   def backward
-    mpd = MPD.new 'localhost', 6601
+    mpd = MPD.new CONFIG['mpd_server'], CONFIG['mpd_port']
     mpd.connect
     mpd.previous
     mpd.disconnect
@@ -37,7 +36,7 @@ class PlayerController < ApplicationController
   end
 
   def add
-    mpd = MPD.new 'localhost', 6601
+    mpd = MPD.new CONFIG['mpd_server'], CONFIG['mpd_port']
     mpd.connect
     @songs = mpd.find(params[:type], params[:what])
     @songs.each do |song|
@@ -49,7 +48,7 @@ class PlayerController < ApplicationController
   end
 
   def clear
-    mpd = MPD.new 'localhost', 6601
+    mpd = MPD.new CONFIG['mpd_server'], CONFIG['mpd_port']
     mpd.connect
     mpd.clear
     mpd.disconnect
@@ -58,7 +57,7 @@ class PlayerController < ApplicationController
   end
 
   def play
-    mpd = MPD.new 'localhost', 6601
+    mpd = MPD.new CONFIG['mpd_server'], CONFIG['mpd_port']
     mpd.connect
     mpd.play(params[:pos])
     mpd.disconnect

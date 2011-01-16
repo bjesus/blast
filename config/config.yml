@@ -1,0 +1,3 @@
+mpd_port: 6601
+mpd_server: localhost
+music_root: /home/bjesus/Music/

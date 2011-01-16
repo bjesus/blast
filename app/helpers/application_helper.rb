@@ -1,10 +1,11 @@
 module ApplicationHelper
 
   def cover(song)
+    p config.encoding
     path = song.file.split("/")
     path.delete_at(-1)
     path = path.join("/")
-    base = "/home/bjesus/Music/"
+    base = CONFIG['music_root']
     p base+path
     if File.exists? base+path+"/folder.jpg"
       return path+"/folder.jpg"

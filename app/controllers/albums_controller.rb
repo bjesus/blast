@@ -1,10 +1,9 @@
 class AlbumsController < ApplicationController
+  require 'rubygems'
+  require 'librmpd'
 
   def index
-    require 'rubygems'
-    require 'librmpd'
-
-    mpd = MPD.new 'localhost', 6601
+    mpd = MPD.new CONFIG['mpd_server'], CONFIG['mpd_port']
     mpd.connect
     @current = mpd.current_song
     @status = mpd.status
