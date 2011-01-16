@@ -1,0 +1,21 @@
+#playlist
+  %ol
+    - @playlist.each do |song|
+      %li= link_to song.title, "/player/play/"+song.pos
+
+- if cover(@current)
+  = image_tag("/music/"+cover(@current), html_options={"id"=>"cover"})
+- if @status['state'] == 'play'
+  %h1= "Playing:"
+- else
+  %h1= "Paused:"
+%h2= @current.title+" by "+@current.artist
+= link_to "Play/Pause", "/player/pp"
+= link_to "Next", "/player/next"
+= link_to "Previous", "/player/previous"
+
+
+%h5= "Next: "+@next['title']
+
+.content
+  = yield

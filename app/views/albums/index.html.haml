@@ -1,0 +1,8 @@
+
+%ul
+- @albums.sort.each do |album|
+  %li= link_to album, "/player/add/album/"+album
+  
+%h4= "Sum: "+@albums.count.to_s
+
+
